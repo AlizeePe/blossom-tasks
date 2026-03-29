@@ -1,9 +1,13 @@
 // Library
 import { useState } from "react";
 import { Pencil, Trash2 } from "lucide-react";
+import clsx from "clsx";
 
 // Types
 import type { Task } from "../../types";
+
+// Styles
+import styles from "./TaskItem.module.scss";
 
 type TaskItemProps = {
   task: Task;
@@ -41,8 +45,12 @@ function TaskItem({ task, onComplete, onRemove, onEdit }: TaskItemProps) {
   }
 
   return (
-    <li>
+    <li className={clsx(styles.item, task.completed && styles.itemCompleted)}>
       <button
+        className={clsx(
+          styles.checkbox,
+          task.completed && styles.checkboxChecked,
+        )}
         onClick={() => onComplete(task.id)}
         aria-label={task.completed ? "Mark as active" : "Mark as completed"}
         aria-pressed={task.completed}
@@ -51,6 +59,7 @@ function TaskItem({ task, onComplete, onRemove, onEdit }: TaskItemProps) {
 
       {isEditing ? (
         <input
+          className={styles.editInput}
           type="text"
           value={editText}
           onChange={handleEditChange}
@@ -59,19 +68,33 @@ function TaskItem({ task, onComplete, onRemove, onEdit }: TaskItemProps) {
           autoComplete="off"
         />
       ) : (
-        <span>{task.text}</span>
+        <span
+          className={clsx(styles.text, task.completed && styles.textCompleted)}
+        >
+          {task.text}
+        </span>
       )}
 
       {/* Actions */}
-      <div>
+      <div className={styles.actions}>
         {isEditing ? (
-          <button onClick={handleSave}>Save</button>
+          <button className={styles.saveButton} onClick={handleSave}>
+            Save
+          </button>
         ) : (
           <>
-            <button onClick={() => setIsEditing(true)} aria-label="Edit task">
+            <button
+              className={styles.editButton}
+              onClick={() => setIsEditing(true)}
+              aria-label="Edit task"
+            >
               <Pencil size={14} />
             </button>
-            <button onClick={() => onRemove(task.id)} aria-label="Delete task">
+            <button
+              className={styles.deleteButton}
+              onClick={() => onRemove(task.id)}
+              aria-label="Delete task"
+            >
               <Trash2 size={14} />
             </button>
           </>

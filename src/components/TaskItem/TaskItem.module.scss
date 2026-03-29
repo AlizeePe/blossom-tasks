@@ -1,0 +1,122 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.item {
+  @include flex-row($spacing-md);
+  padding: $spacing-md $spacing-lg;
+  background-color: $color-surface;
+  border: 0.5px solid $color-border;
+  border-radius: $radius-md;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: $color-primary-border;
+  }
+}
+
+.itemCompleted {
+  opacity: 0.7;
+}
+
+.checkbox {
+  @include button-reset;
+  @include flex-center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+  border: 1.5px solid $color-primary-border;
+  background-color: transparent;
+  transition:
+    background-color $transition-base,
+    border-color $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.checkboxChecked {
+  background-color: $color-primary;
+  border-color: $color-primary;
+
+  // Checkmark via CSS
+  &::after {
+    content: "";
+    width: 5px;
+    height: 9px;
+    border-right: 2px solid $color-surface;
+    border-bottom: 2px solid $color-surface;
+    transform: rotate(45deg) translate(-1px, -1px);
+    display: block;
+  }
+}
+
+.text {
+  flex: 1;
+  font-size: $font-size-base;
+  color: $color-text;
+  transition: color $transition-base;
+}
+
+.textCompleted {
+  text-decoration: line-through;
+  color: $color-text-muted;
+}
+
+.editInput {
+  flex: 1;
+  padding: $spacing-xs $spacing-sm;
+  border: 0.5px solid $color-primary;
+  border-radius: $radius-sm;
+  font-size: $font-size-base;
+  color: $color-text;
+  outline: none;
+  background-color: $color-surface;
+  box-shadow: 0 0 0 3px $color-primary-focus;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.actions {
+  @include flex-row($spacing-xs);
+  flex-shrink: 0;
+}
+
+.editButton {
+  @include action-button(
+    $color-primary-dark,
+    $color-primary-light,
+    $color-primary-border
+  );
+}
+
+.saveButton {
+  @include button-reset;
+  padding: $spacing-xs $spacing-md;
+  background-color: $color-primary;
+  color: $color-surface;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+}
+
+.deleteButton {
+  @include action-button(
+    $color-danger,
+    $color-danger-light,
+    $color-danger-border
+  );
+}

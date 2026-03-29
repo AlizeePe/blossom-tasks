@@ -1,0 +1,7 @@
+@use "./styles/variables" as *;
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: $spacing-xl;
+}

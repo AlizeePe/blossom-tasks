@@ -1,3 +1,6 @@
+// Styles
+import styles from "./Footer.module.scss";
+
 type FooterProps = {
   pendingCount: number;
   onClearCompleted(): void;
@@ -5,11 +8,13 @@ type FooterProps = {
 
 function Footer({ pendingCount, onClearCompleted }: FooterProps) {
   return (
-    <footer>
-      <span>
+    <footer className={styles.footer}>
+      <span className={styles.count}>
         {pendingCount} task{pendingCount !== 1 ? "s" : ""} remaining
       </span>
-      <button onClick={onClearCompleted}>Clear completed</button>
+      <button className={styles.clearButton} onClick={onClearCompleted}>
+        Clear completed
+      </button>
     </footer>
   );
 }

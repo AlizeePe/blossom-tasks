@@ -11,6 +11,9 @@ import FilterBar from "./components/FilterBar/FilterBar";
 import TaskList from "./components/TaskList/TaskList";
 import Footer from "./components/Footer/Footer";
 
+// Styles
+import styles from "./App.module.scss";
+
 // Load and parse tasks from localStorage
 function loadTasks(): Task[] {
   try {
@@ -79,7 +82,7 @@ function App() {
   const pendingCount = tasks.filter((task) => !task.completed).length;
 
   return (
-    <main>
+    <main className={styles.app}>
       <Header />
       <TaskForm text={text} onTextChange={setText} onSubmit={addTask} />
       <FilterBar activeFilter={activeFilter} onFilterSelect={setActiveFilter} />

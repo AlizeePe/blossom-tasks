@@ -1,0 +1,37 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.header {
+  text-align: center;
+  padding: $spacing-2xl 0 $spacing-xl;
+}
+
+.dots {
+  @include flex-center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background-color: $color-primary-border;
+}
+
+.dotActive {
+  background-color: $color-primary;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  color: $color-primary-dark;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  margin-top: $spacing-xs;
+}

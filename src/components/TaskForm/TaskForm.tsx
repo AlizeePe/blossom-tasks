@@ -1,3 +1,6 @@
+// Styles
+import styles from "./TaskForm.module.scss";
+
 type TaskFormProps = {
   text: string;
   onTextChange(value: string): void;
@@ -17,19 +20,20 @@ function TaskForm({ text, onTextChange, onSubmit }: TaskFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <label htmlFor="task-input" className="sr-only">
         Add a Task
       </label>
       <input
         id="task-input"
+        className={styles.input}
         type="text"
         value={text}
         onChange={handleChange}
         placeholder="Add a task..."
         autoComplete="off"
       />
-      <button type="submit" disabled={!text.trim()}>
+      <button type="submit" className={styles.button} disabled={!text.trim()}>
         Add
       </button>
     </form>

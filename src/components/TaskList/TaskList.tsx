@@ -4,6 +4,9 @@ import type { Task } from "../../types";
 // Components
 import TaskItem from "../TaskItem/TaskItem";
 
+// Styles
+import styles from "./TaskList.module.scss";
+
 type TaskListProps = {
   items: Task[];
   onComplete(id: number): void;
@@ -13,7 +16,7 @@ type TaskListProps = {
 
 function TaskList({ items, onComplete, onRemove, onEdit }: TaskListProps) {
   return (
-    <ul>
+    <ul className={styles.list}>
       {items.map((task) => (
         <TaskItem
           key={task.id}

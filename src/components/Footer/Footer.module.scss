@@ -1,0 +1,25 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  @include flex-between;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 0.5px solid $color-border;
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.clearButton {
+  @include button-reset;
+  font-size: $font-size-sm;
+  color: $color-danger;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

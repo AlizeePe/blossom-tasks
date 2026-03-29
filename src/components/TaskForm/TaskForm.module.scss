@@ -1,0 +1,56 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.form {
+  @include flex-row($spacing-sm);
+  margin-bottom: $spacing-xl;
+}
+
+.input {
+  flex: 1;
+  padding: $spacing-sm $spacing-md;
+  border: 0.5px solid $color-primary-border;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  background-color: $color-primary-light;
+  color: $color-text;
+  outline: none;
+  transition: border-color $transition-base;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px $color-primary-focus;
+  }
+}
+
+.button {
+  @include button-reset;
+  padding: $spacing-sm $spacing-xl;
+  background-color: $color-primary;
+  color: $color-surface;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  font-weight: 500;
+  transition: background-color $transition-base;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-hover;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    @include disabled;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
